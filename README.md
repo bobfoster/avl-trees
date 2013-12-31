@@ -102,7 +102,7 @@ the height of a non-leaf node is _max(height(left),height(right))+1_.
 The height of a node could obviously be recursively calculated by following links
 down to the leaves, but since height is so important to an AVL tree it is kept
 in each node. When a node is created and any time a left or right link is changed
-the height is quickly recalculated.
+the height is quickly recalculated by examining only two links.
 
 Balance
 -------
