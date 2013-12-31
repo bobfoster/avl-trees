@@ -149,7 +149,7 @@ rotate the 'c' subtree right. At most two rotations are required to reduce
 the tree height.
 
 Pseudo-code
-===========
+-----------
 
 A right rotation can be expressed in pseudo-code (for a mutable tree):
 
