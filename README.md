@@ -22,7 +22,7 @@ the data in the node, and all data in the right subtree are greater. Thus,
      a   c
 
 is a valid binary search tree. Here the links are represented by / and \ characters
-and only the data is shown in the node. This is simpler than a representation like:
+and only the data is shown in the node.
 
 Searching for Data
 ------------------
