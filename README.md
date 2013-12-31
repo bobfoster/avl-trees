@@ -135,7 +135,7 @@ any of the others.
 
 To shorten a subtree, we apply tree rotations. For example, transforming
 tree 2 to tree 1 can be thought of as a _right rotation_ (clockwise),
-while to transform tree 4 to tree 1 can be thought of as a _left rotation_
+while transforming tree 4 to tree 1 can be thought of as a _left rotation_
 (counter-clockwise).
 
 In case 2, the left subtree of c has height two greater than the right subtree,
