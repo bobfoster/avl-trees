@@ -223,7 +223,7 @@ In pseudo-code, a balanceNode method will look like this:
          int leftBalance = height(node.left.left) - height(node.left.right)
          if (leftBalance < 0) {
            // left.right higher
-           rotateLeft(node.left)
+           node.setLeft(rotateLeft(node.left))
          }
          node = rotateRight(node)
        } else if (balance < -1) {
@@ -231,7 +231,7 @@ In pseudo-code, a balanceNode method will look like this:
          int rightBalance = height(node.right.left) - height(node.right.right)
          if (rightBalance > 0) {
            // right.left higher
-           rotateRight(node.right)
+           node.setRight(rotateRight(node.right))
          }
          node = rotateLeft(node)
        }
