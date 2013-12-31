@@ -261,7 +261,7 @@ applications where state changes can be isolated to a reference to the single no
 at the root of the tree, or for serial applications where the capability to
 instantly revert to any previous state of the tree is desired.
 
-*AvlSet* is a procedural (normal Java style) implementation. It implements the
+*AvlTreeSet* is a procedural (normal Java style) implementation. It implements the
 java.util.Set interface and is highly stateful. Instead of creating new nodes
 for link changes, links are modified in place, etc. It "plays nice" with the
 Collection classes, and can be used as a basis for java.util.Map, etc.
@@ -269,7 +269,7 @@ Collection classes, and can be used as a basis for java.util.Map, etc.
 Performance
 -----------
 
-In a mini-benchmark adding and removing 100,000 strings, AvlSet runs about the same
+In a mini-benchmark adding and removing 100,000 strings, AvlTreeSet runs about the same
 speed as TreeSet from the Collection classes. As expected, AvlTree is slower, but
 only about 30% slower, which may not be an issue if its additional features are
 desired. Some sample numbers:
