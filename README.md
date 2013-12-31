@@ -109,7 +109,8 @@ Balance
 
 We talked about a "balanced binary tree". Balance can be defined in terms of
 height. An AVL node is considered balanced if its left and right subtrees
-differ in height by at most 1.
+differ in height by at most 1. (This is the best we can do, or we wouldn't be
+able to have a two-node tree.)
 
 In practice, we calculate _balance=height(left)-height(right)_. If balance
 is greater than 1 we must reduce the height of the left subtree; if it is
