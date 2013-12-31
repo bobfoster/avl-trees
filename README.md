@@ -131,16 +131,14 @@ the tree. Thus the following trees are equivalent:
                a          b          c     b
 
 However, they differ in an important way. Tree 1 is shorter than
-any of the others.
+any of the others, and it is balanced, while the root node in all the others is
+out of balance. To bring them into balance, the left subtrees
+of 2 and 3 must be shortened, while for 4 and 5, the right subtrees.
 
-To shorten a subtree, we apply tree rotations. For example, transforming
-tree 2 to tree 1 can be thought of as a _right rotation_ (clockwise),
+To shorten a subtree, we apply tree transformations called _rotations_. For example,
+transforming tree 2 to tree 1 can be thought of as a _right rotation_ (clockwise),
 while transforming tree 4 to tree 1 can be thought of as a _left rotation_
 (counter-clockwise).
-
-In case 2, the left subtree of c has height two greater than the right subtree,
-so we must rotate right. Case 4 is the opposite, so we must rotate left.
-In case 1, the subtrees are the same height and no rotation is needed.
 
 What about 3 and 5? If we try to rotate 3 right, we wind up with:
 
@@ -165,6 +163,9 @@ Likewise, for case 5, we can rotate left only after we rotate the 'c' subtree ri
 turning it into case 4. In general, at most two rotations are required to balance a
 node.
 
+(Of course, the newly balanced node is not the same node we started out with,
+so the link to the original node must be replaced with a link to the balanced node.)
+
 Pseudo-code
 -----------
 
@@ -187,7 +188,8 @@ Likewise, a left rotation:
      }
 
 (The setLeft and setRight methods are assumed to recalculate the height of the
-target node.)
+target node. The methods return the newly balanced node, so it can be linked to
+as discussed above.)
 
 We have omitted from our diagrams any consideration of the left.right link on a
 right rotation or a right.left link on a left rotation. The following diagrams should
@@ -241,10 +243,10 @@ In pseudo-code, a balanceNode method will look like this:
 The rule is, whenever a node is added or moved up in the course of delete, balanceNode
 must be called on the parent of the added or moved up node and all the way up the tree
 to the root. Since the tree is usually traversed recursively to add or delete,
-it is simple to call balanceNode at the conclusion of step back up the stack.
+it is simple to call balanceNode before each return.
 
 (Delete may take a little detour down to the next lower node, but again this is done
-recursively and balanceNode can be applied at each step up.)
+recursively and balanceNode can be applied at each return.)
 
 Project Code
 ------------
