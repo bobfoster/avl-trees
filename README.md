@@ -190,7 +190,7 @@ clear that up and enable you to better see what the code is doing.
 
 In each case, the replacement for the rotated node is now balanced and the
 resulting tree is correct. (These examples assume there is some ?
-value between a and b, perhaps 'aa'?)
+value between b and c in 2, perhaps 'bb', or between a and b in 4, perhaps 'aa'?)
 
 The rotations are actually applied in a method we will call balanceNode,
 which fixes any imbalance it finds in a tree node.
