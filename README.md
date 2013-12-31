@@ -162,8 +162,8 @@ then rotate right.
            b                  a
 
 Likewise, for case 5, we can rotate left only after we rotate the 'c' subtree right,
-turning it into case 4. In general, at most two rotations are required to reduce
-the tree height.
+turning it into case 4. In general, at most two rotations are required to balance a
+node.
 
 Pseudo-code
 -----------
