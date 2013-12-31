@@ -11,7 +11,7 @@ marred by unnecessary terminology, like "left-left case", which has little to do
 what is actually going on.
 
 Binary Trees
-============
+------------
 
 In a binary tree, each node has a left and right link, and data that can be ordered.
 By convention, all the data in nodes in the left subtree of a node are less than
@@ -25,7 +25,7 @@ is a valid binary search tree. Here the links are represented by / and \ charact
 and only the data is shown in the node. This is simpler than a representation like:
 
 Searching for Data
-==================
+------------------
 
 To locate a data node, begin at the root node. If the data
 sought is in the node, the search is successful; otherwise, if the data sought is less
@@ -35,7 +35,7 @@ Either the search will succeed or there will be no more links to follow and it
 will fail.
 
 Adding Data
-===========
+-----------
 
 To add data, search for the data to be added as above. If it is not found, the last node
 considered will be a leaf node; simply create a new leaf node for the data and link to it
@@ -56,7 +56,7 @@ the data, which will also contain at least one other value. Neither will affect 
 tree height.)
 
 Deleting Data
-=============
+-------------
 
 Deletion is a little more complicated. If the node containing the data to be deleted
 is a leaf, it can simply be removed and the link to it erased. If the node has only
@@ -92,7 +92,7 @@ deleted node. This is simpler to understand in a diagram:
 Deletion always reduces the height of a subtree by 1.
 
 Tree Height
-===========
+-----------
 
 We have been talking about "height of the tree" without actually defining it.
 The height of an empty link is zero. The height of a non-empty link is the
@@ -105,7 +105,7 @@ in each node. When a node is created and any time a left or right link is change
 the height is quickly recalculated.
 
 Balance
-=======
+-------
 
 We talked about a "balanced binary tree". Balance can be defined in terms of
 height. An AVL node is considered balanced if its left and right subtrees
@@ -116,7 +116,7 @@ is greater than 1 we must reduce the height of the left subtree; if it is
 less that -1 we must reduce the height of the right subtree.
 
 Tree Rotations
-==============
+--------------
 
 How can we reduce the height of a subtree? As you may have noticed, the arrangement
 of nodes in a binary tree is arbitrary depending on the order they were added to
