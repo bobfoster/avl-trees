@@ -170,8 +170,29 @@ In pseudo-code, a balanceNode method will look like this:
        }
      }
 
-The rule is, whenever a node is added or moved up in the course of delete,balanceNode
+The rule is, whenever a node is added or moved up in the course of delete, balanceNode
 must be called on the parent of the added or moved up node and all the way up the tree
-to the root.
+to the root. Since the tree is usually traversed recursively to add or delete,
+it is simple to call balanceNode at the conclusion of step back up the stack.
 
+(Delete may take a little detour down to the next lower node, but again this is done
+recursively and balanceNode can be applied at each step up.)
+
+Project Code
+------------
+
+The code examples show two different ways to apply AVL trees.
+
+*AVLTree* is a functional implementation. Each node represents a complete AVL subtree
+and is immutable. Adding or deleting a node returns a new tree that contains (or
+does not contain) the added (deleted) node and shares structure with the unaffected
+parts of the tree. The functional implementation is useful for concurrent
+applications where state changes can be isolated to a reference to the single node
+at the root of the tree, or for serial applications where the capability to
+instantly revert to any previous state of the tree is desired.
+
+*AVLSet* is a procedural (normal Java style) implementation. It implements the
+java.util.Set interface and is highly stateful. Instead of creating new nodes
+for link changes, links are modified in place, etc. It "plays nice" with the
+Collection classes.
 
