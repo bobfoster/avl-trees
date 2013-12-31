@@ -148,6 +148,53 @@ then rotate right. Likewise, for case 5, we can rotate left only after we
 rotate the 'c' subtree right. At most two rotations are required to reduce
 the tree height.
 
+Pseudo-code
+===========
+
+A right rotation can be expressed in pseudo-code (for a mutable tree):
+
+    void rotateRight(Node node) {
+      Node left = node.left
+      node.setLeft(left.right)
+      left.setRight(node)
+    }
+
+Likewise, a left rotation:
+
+     void rotateLeft(Node node) {
+       Node right = node.right
+       node.setRight(right.left)
+       right.setLeft(node)
+     }
+
+(The setLeft and setRight methods are assumed to recalculate the height of the
+target node.)
+
+We have omitted from our diagrams any consideration of the right link on a
+left rotation or a left link on a left rotation. The following diagrams should
+clear that up and enable you to better see what the code is doing.
+
+          2      right-rotate to      1
+          c                           b
+         /                           / \
+        b                           a   c
+       / \                             /
+      a   ?                           ?
+      
+         4       left-rotate to       1
+         a                            b
+          \                          / \
+           b                        a   c
+          / \                        \
+         ?   c                        ?
+
+In each case, the rotated node has been brought back into balance and the
+resulting tree is correct. (These examples assume there is some ?
+value between a and b, perhaps 'aa'?)
+
+The rotations are actually applied in a method we will call balanceNode,
+which fixes any imbalance it finds in a tree node.
+
 In pseudo-code, a balanceNode method will look like this:
 
      void balanceNode(Node node) {
