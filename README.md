@@ -188,7 +188,7 @@ clear that up and enable you to better see what the code is doing.
           / \                        \
          ?   c                        ?
 
-In each case, the rotated node has been brought back into balance and the
+In each case, the replacement for the rotated node is now balanced and the
 resulting tree is correct. (These examples assume there is some ?
 value between a and b, perhaps 'aa'?)
 
@@ -242,5 +242,5 @@ instantly revert to any previous state of the tree is desired.
 *AVLSet* is a procedural (normal Java style) implementation. It implements the
 java.util.Set interface and is highly stateful. Instead of creating new nodes
 for link changes, links are modified in place, etc. It "plays nice" with the
-Collection classes.
+Collection classes, and can be used as a basis for java.util.Map, etc.
 
