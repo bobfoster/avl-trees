@@ -142,10 +142,27 @@ In case 2, the left subtree of c has height two greater than the right subtree,
 so we must rotate right. Case 4 is the opposite, so we must rotate left.
 In case 1, the subtrees are the same height and no rotation is needed.
 
-What about 3 and 5? We can't rotate tree 3 right, because the result would be
-an invalid tree. But what we can do is first rotate the 'a' subtree left and
-then rotate right. Likewise, for case 5, we can rotate left only after we
-rotate the 'c' subtree right. At most two rotations are required to reduce
+What about 3 and 5? If we try to rotate 3 right, we wind up with:
+
+           3                     5
+           c   rotate right to   a
+          /                       \
+         a                         c
+          \                       /
+           b                     b
+           
+Which is not progress! But what we can do is first rotate the 'a' subtree left and
+then rotate right.
+
+           3                      2                       1
+           c                      c    rotate right to    b
+          /                      /                       / \
+         a    rotate left to    b                       a   c
+          \                    /
+           b                  a
+
+Likewise, for case 5, we can rotate left only after we rotate the 'c' subtree right,
+turning it into case 4. In general, at most two rotations are required to reduce
 the tree height.
 
 Pseudo-code
@@ -153,35 +170,37 @@ Pseudo-code
 
 A right rotation can be expressed in pseudo-code (for a mutable tree):
 
-    void rotateRight(Node node) {
+    Node rotateRight(Node node) {
       Node left = node.left
       node.setLeft(left.right)
       left.setRight(node)
+      return left
     }
 
 Likewise, a left rotation:
 
-     void rotateLeft(Node node) {
+     Node rotateLeft(Node node) {
        Node right = node.right
        node.setRight(right.left)
        right.setLeft(node)
+       return right
      }
 
 (The setLeft and setRight methods are assumed to recalculate the height of the
 target node.)
 
-We have omitted from our diagrams any consideration of the right link on a
-left rotation or a left link on a left rotation. The following diagrams should
+We have omitted from our diagrams any consideration of the left.right link on a
+right rotation or a right.left link on a left rotation. The following diagrams should
 clear that up and enable you to better see what the code is doing.
 
-          2      right-rotate to      1
+          2      rotate right to      1
           c                           b
          /                           / \
         b                           a   c
        / \                             /
       a   ?                           ?
       
-         4       left-rotate to       1
+         4       rotate left to       1
          a                            b
           \                          / \
            b                        a   c
@@ -206,7 +225,7 @@ In pseudo-code, a balanceNode method will look like this:
            // left.right higher
            rotateLeft(node.left)
          }
-         rotateRight(node)
+         node = rotateRight(node)
        } else if (balance < -1) {
          // right subtree too high
          int rightBalance = height(node.right.left) - height(node.right.right)
@@ -214,8 +233,9 @@ In pseudo-code, a balanceNode method will look like this:
            // right.left higher
            rotateRight(node.right)
          }
-         rotateLeft(node);
+         node = rotateLeft(node)
        }
+       return node
      }
 
 The rule is, whenever a node is added or moved up in the course of delete, balanceNode
