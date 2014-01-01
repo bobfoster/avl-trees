@@ -272,10 +272,25 @@ Performance
 In a mini-benchmark adding and removing 100,000 strings, AvlTreeSet runs about the same
 speed as TreeSet from the Collection classes. As expected, AvlTree is slower, but
 only about 30% slower, which may not be an issue if its additional features are
-desired. Some sample numbers:
+desired. Some representative numbers:
 
      Class      Sec.  Difference
      TreeSet    3.44  0.00%
      AvlTreeSet 3.56  3.31%
      AvlTree    4.45  29.27%
 
+There is a great deal of variability in the results, e.g.,
+
+     TreeSet    4.66  0.00%
+     AvlTreeSet 4.38  -6.05%
+     AvlTree    5.39  15.67%
+
+     TreeSet    3.29  0.00%
+     AvlTreeSet 4.03  22.40%
+     AvlTree    4.58  39.23%
+     
+Which is probably a comment on my ability to construct a micro-benchmark.
+
+Finally, it should be noted that _any_ set implementation that maintains order
+is seriously slower than a hash set. For example, java.util.HashSet runs the
+same test in approx. 0.5 seconds.
