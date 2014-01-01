@@ -218,7 +218,7 @@ which fixes any imbalance it finds in a tree node.
 
 In pseudo-code, a balanceNode method will look like this:
 
-     void balanceNode(Node node) {
+     Node balanceNode(Node node) {
        int balance = height(node.left) - height(node.right)
        if (balance > 1) {
          // left subtree too high
